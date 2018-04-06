@@ -39,7 +39,7 @@ jQuery( document ).ready( function( $ ){
         skip_render_filter: false,
         xhr: null,
         getTemplate: getTemplate,
-        
+        el: $( '#customify-sites-listing-outer' ),
         load_sites: function ( cb ) {
             var that = this;
             if ( that.xhr ) {
@@ -48,6 +48,7 @@ jQuery( document ).ready( function( $ ){
                 that.xhr = null;
             }
             $( 'body' ).addClass('loading-content');
+            that.filter_data = that.get_filter_data();
             that.filter_data['_t'] = new Date().getTime();
             that.xhr = $.ajax( {
                 url: Customify_Sites.api_url,
@@ -74,8 +75,10 @@ jQuery( document ).ready( function( $ ){
         },
 
         filter_bar: function(){
-            var html=  $( '#customify-site-filter-html' ).html();
-            $( '#customify-sites-listing-outer' ).prepend( html );
+            if ( ! this.el.hasClass('cs-hide-filter') ) {
+                var html=  $( '#customify-site-filter-html' ).html();
+                this.el.prepend( html );
+            }
         },
 
         render_items: function(){
@@ -114,8 +117,8 @@ jQuery( document ).ready( function( $ ){
             } );
         },
 
-
         get_filter_data: function(){
+            var number = this.el.data( 'number' ) || '';
             var cat = $( '#customify-sites-filter-cat a.current' ).eq(0).attr( 'data-slug' ) || '';
             var tag = $( '#customify-sites-filter-tag a.current' ).eq(0).attr( 'data-slug' ) || '';
             var s = $( '#customify-sites-search-input' ).val();
@@ -125,7 +128,8 @@ jQuery( document ).ready( function( $ ){
             return {
                 cat: cat,
                 tag: tag,
-                s: s
+                s: s,
+                per_page: number
             }
         },
 

@@ -111,6 +111,11 @@ $boder: 1px solid #e5e5e5;
 #customify-sites-listing-outer {
     min-height: 350px;
     display: block;
+    &.cs-hide-desc {
+        .theme-desc {
+            display: none;
+        }
+    }
 }
 .theme-browser {
     .themes {
@@ -208,7 +213,9 @@ body.loading-content {
     display: block;
     overflow: hidden;
     margin: 0px;
-    padding: 2em 0px;
+    p {
+        padding: 2em 0px;
+    }
     text-align: center;
 }
 body.no-results{

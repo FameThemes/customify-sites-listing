@@ -97,6 +97,9 @@
   min-height: 350px;
   display: block;
 }
+#customify-sites-listing-outer.cs-hide-desc .theme-desc {
+  display: none;
+}
 
 .theme-browser .themes {
   clear: both;
@@ -195,8 +198,10 @@ body.loading-content #customify-sites-listing {
   display: block;
   overflow: hidden;
   margin: 0px;
-  padding: 2em 0px;
   text-align: center;
+}
+.no-themes p {
+  padding: 2em 0px;
 }
 
 body.no-results .no-themes {
