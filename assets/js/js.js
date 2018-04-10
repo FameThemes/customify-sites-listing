@@ -191,7 +191,7 @@ jQuery( document ).ready( function( $ ){
         init: function(){
             var that = this;
             // open view
-            $( document ).on( 'click', '#customify-sites-listing .cs-site', function( e ) {
+            $( document ).on( 'click', '#customify-sites-listing .theme-screenshot', function( e ) {
                 e.preventDefault();
                 var slug = $( this ).attr( 'data-slug' ) || '';
                 console.log( 'slug', slug );

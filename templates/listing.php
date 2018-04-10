@@ -17,7 +17,7 @@
 <script id="customify-site-item-html" type="text/html">
     <div class="cs-site customify-col" data-slug="{{ data.slug }}">
         <div class="theme" title="{{ data.title }}" tabindex="0" aria-describedby="">
-            <div class="theme-screenshot">
+            <div class="theme-screenshot" data-slug="{{ data.slug }}">
                 <img src="{{ data.thumbnail_url }}" alt="{{ data.title }} Site Demo">
             </div>
             <div class="theme-id-container">

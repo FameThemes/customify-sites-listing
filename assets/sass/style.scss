@@ -13,8 +13,6 @@
         @content;
     }
 }
-
-
 .cs-hide {
     visibility: hidden;
     height: 0px;
@@ -129,14 +127,17 @@ $boder: 1px solid #e5e5e5;
 }
 
 .theme-browser .theme {
-    cursor: pointer;
     width: 100%;
     position: relative;
     box-sizing: border-box;
+    &:focus {
+        outline: none !important;
+    }
     .theme-screenshot {
         display: block;
         overflow: hidden;
         position: relative;
+        cursor: pointer;
         -webkit-backface-visibility: hidden;
         box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05);
         &:after {
