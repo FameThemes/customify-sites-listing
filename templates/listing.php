@@ -18,7 +18,7 @@
     <div class="cs-site customify-col" data-slug="{{ data.slug }}">
         <div class="theme" title="{{ data.title }}" tabindex="0" aria-describedby="">
             <div class="theme-screenshot">
-                <img src="{{ data.thumbnail_url }}" alt="">
+                <img src="{{ data.thumbnail_url }}" alt="{{ data.title }} Site Demo">
             </div>
             <div class="theme-id-container">
                 <h2 class="theme-name" id="{{ data.slug }}-name">{{ data.title }}</h2>
