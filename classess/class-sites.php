@@ -20,10 +20,14 @@ Class Customify_Sites_Listing {
     }
 
     function check_shortcode(){
-        global $post;
-        if ( has_shortcode( $post->post_content, 'customify-sites-listing' ) ) {
-            add_action( 'wp_footer', array( self::$_instance, 'templates' ) );
-            add_action( 'wp_enqueue_scripts', array( self::$_instance, 'scripts' ) );
+        if ( ! is_admin() ) {
+            if ( is_singular() || is_page() || is_single() ) {
+                global $post;
+                if (has_shortcode($post->post_content, 'customify-sites-listing')) {
+                    add_action('wp_footer', array(self::$_instance, 'templates'));
+                    add_action('wp_enqueue_scripts', array(self::$_instance, 'scripts'));
+                }
+            }
         }
     }
 
