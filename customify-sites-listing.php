@@ -16,7 +16,7 @@ require dirname( __FILE__ ) . '/classess/class-sites.php';
 Customify_Sites_Listing::get_instance();
 
 function customify_site_listing_shortcode_func( $atts ) {
-    // [customify-sites-listing col="3_md-2_sm_1", filter="1" number="" desc="""]`
+    // [customify-sites-listing col="3_md-2_sm-1", filter="1" number="" desc="""]`
     $atts = wp_parse_args( $atts, array(
         'col' => null,
         'filter' => null,
