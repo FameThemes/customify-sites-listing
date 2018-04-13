@@ -1,7 +1,7 @@
 # customify-sites-listing
 Display Customify Sites Frontend
 
-`[customify-sites-listing col="3_md-2_sm_1", filter="1" number="" desc="""]`
+`[customify-sites-listing col="3_md-2_sm-1", filter="1" number="" desc="""]`
 
 * col: Grid Flex class, default: 3_md-2_sm_1
 * filter: Show filter bar, default 1, 0 to hide
