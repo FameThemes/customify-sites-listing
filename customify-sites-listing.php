@@ -26,7 +26,7 @@ function customify_site_listing_shortcode_func( $atts ) {
 
     $atts['col'] = sanitize_text_field( $atts['col'] );
     if ( ! $atts['col']  ){
-        $atts['col'] = '3_md-2_sm_1';
+        $atts['col'] = '3_md-2_sm-1';
     }
 
     $classes = array();
