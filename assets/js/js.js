@@ -250,7 +250,7 @@ jQuery( document ).ready( function( $ ){
                     $item = current_demo.prev();
                 }
                 if ( $item.length > 0 ) {
-                    $item.click();
+                    $item.find( '.theme-screenshot' ).click();
                 }
             } );
 
