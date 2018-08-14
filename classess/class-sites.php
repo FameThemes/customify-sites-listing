@@ -36,9 +36,13 @@ Class Customify_Sites_Listing {
     }
 
     function get_localize_script(){
+	    global $wp;
         $args = array(
+            'current_page' => trailingslashit(  home_url( $wp->request ) ),
             'api_url' => self::get_api_url(),
             'ajax_url' => admin_url( 'admin-ajax.php' ),
+            'current_builder' => isset( $_GET['builder'] ) ? sanitize_text_field( $_GET['builder'] ) : false,
+            'current_demo' => isset( $_GET['demo'] ) ? sanitize_text_field( $_GET['demo'] ) : false,
         );
         return $args;
     }

@@ -56,7 +56,6 @@ jQuery( document ).ready( function( $ ){
                 type: 'GET',
                 success: function( res ){
                     that.data = res;
-
                     that.render_items();
                     if ( ! that.skip_render_filter ) {
                         that.filter_bar( );
@@ -70,6 +69,7 @@ jQuery( document ).ready( function( $ ){
                     if ( typeof cb === 'function' ) {
                         cb( res );
                     }
+                    $( document ).trigger( 'customify-sites/data-loaded' );
                 }
             } );
         },
@@ -104,9 +104,14 @@ jQuery( document ).ready( function( $ ){
         render_categories: function(){
             var that = this;
             _.each( that.data.categories, function( item ){
-                var html = '<li><a href="#" data-slug="'+item.slug+'">'+item.name+'</a></li>';
+                var html = $(  '<li><a href="#" data-slug="'+item.slug+'">'+item.name+'</a></li>' );
+                if ( item.slug === Customify_Sites.current_builder ) {
+                    $( '#customify-sites-filter-cat' ).find( 'a' ).removeClass( 'current' );
+                    html.find( 'a' ).addClass( 'current' );
+                }
                 $( '#customify-sites-filter-cat' ).append( html );
             } );
+
         },
 
         render_tags: function(){
@@ -184,6 +189,22 @@ jQuery( document ).ready( function( $ ){
         }
     };
 
+    var changeURL = function( url, title ){
+        if ( typeof title === "undefined" ) {
+            title = url;
+        }
+        window.history.pushState( url, title, url );
+    };
+
+    var addParamToURL =function(url, queryString) {
+        if (queryString) {
+            var isQuestionMarkPresent = url && url.indexOf('?') !== -1,
+                separator = isQuestionMarkPresent ? '&' : '?';
+            url += separator + queryString;
+        }
+
+        return url;
+    };
 
     var Customify_Site_Preview = {
         el: $( '#customify-site-preview' ),
@@ -194,7 +215,6 @@ jQuery( document ).ready( function( $ ){
             $( document ).on( 'click', '#customify-sites-listing .theme-screenshot', function( e ) {
                 e.preventDefault();
                 var slug = $( this ).attr( 'data-slug' ) || '';
-                console.log( 'slug', slug );
                 if( ! _.isUndefined( Customify_Site.data.posts[ slug ] )  ) {
                     var data = Customify_Site.data.posts[ slug ];
                     that.previewing = data.slug;
@@ -204,9 +224,25 @@ jQuery( document ).ready( function( $ ){
                     $( '.cs-demo-name', that.el ).text( data.title );
                     that.el.removeClass( 'cs-hide' );
                     $( 'body' ).addClass( 'cs-previewing-site' );
+
+
+                    var filter_data  = Customify_Site.get_filter_data();
+                    builder = filter_data.cat ? filter_data.cat : '';
+                    if ( ! builder ) {
+                        if ( data.resources.elementor_xml_url ) {
+                            builder = 'elementor';
+                        } else if ( data.resources.beaver_builder_xm_url ) {
+                            builder = 'beaver';
+                        } else {
+                            builder = 'none';
+                        }
+                    }
+
+                    var url = addParamToURL( Customify_Sites.current_page, 'builder='+builder+'&demo='+slug );
+                    changeURL( url, data.title )
+
                 }
             } );
-
 
             // Device view
             $( document ).on( 'click', '.cs-device-view', function( e ) {
@@ -225,6 +261,8 @@ jQuery( document ).ready( function( $ ){
                 that.el.find( '.cs-iframe iframe' ).attr( 'src', '' );
                 $( 'body' ).removeClass( 'cs-previewing-site' );
                 $( '#customify-site-preview' ).removeClass( 'cs-iframe-loaded' );
+
+                changeURL( Customify_Sites.current_page );
             };
 
             $( document ).on( 'click', '.cs-preview-close', function( e ) {
@@ -266,9 +304,14 @@ jQuery( document ).ready( function( $ ){
     };
 
 
-
     Customify_Site.init();
     Customify_Site_Preview.init();
+
+    $( document ).on( 'customify-sites/data-loaded', function(){
+        if ( Customify_Sites.current_demo ) {
+            $( '.theme-screenshot[data-slug="'+ Customify_Sites.current_demo+'"]' ).eq(0).click();
+        }
+    } );
 
     $( '#cs-preview-iframe' ).load( function(){
         $( '#customify-site-preview' ).addClass( 'cs-iframe-loaded' );

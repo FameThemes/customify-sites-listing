@@ -19,6 +19,7 @@
         <div class="theme" title="{{ data.title }}" tabindex="0" aria-describedby="">
             <div class="theme-screenshot" data-slug="{{ data.slug }}">
                 <img src="{{ data.thumbnail_url }}" alt="{{ data.title }} Site Demo">
+                <button class="view-button" type="button">Quick View</button>
             </div>
             <div class="theme-id-container">
                 <h2 class="theme-name" id="{{ data.slug }}-name">{{ data.title }}</h2>
