@@ -161,7 +161,7 @@
     width: 100%;
     height: 100%;
     display: block;
-    background: rgba( 0, 0,0, .12 );
+    background: rgba( 0, 0, 0, .1 );
     z-index: 6;
     position: absolute;
     top: 0px;
@@ -189,7 +189,6 @@
 }
 
 .theme-browser .theme:hover .theme-screenshot img {
-    padding: 0px;
 }
 
 .theme-browser .theme .view-button{
@@ -199,9 +198,25 @@
     transform: translate( -50%, -50% );
     z-index: 15;
     opacity: 0;
-    transition: opacity .5s ease-in-out;
-    padding: 8px;
+    transition: all .3s ease-out;
+    padding: 0px 14px;
+    min-height: 2.2em;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    color: #555;
+    border: 1px solid transparent;
+    border-radius: 2px;
 }
+
+.theme-browser .theme .view-button:hover {
+    color: #111111;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    border-color: #999999;
+}
+
 .theme-browser .theme:hover .view-button{
     opacity: 1;
 }
@@ -369,11 +384,11 @@ body.cs-previewing-site {
     left: 0px;
     width: 100%;
     display: block;
-    padding: 18px;
-    height: 60px;
+    padding: 18px 18px 12px;
+    height: 56px;
     background: #fff;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    font-size: 24px;
+    font-size: 20px;
 }
 
 #customify-site-preview .cs-preview-bar:after {
@@ -419,6 +434,8 @@ body.cs-previewing-site {
     float: left;
     font-weight: 400;
     line-height: 1;
+    position: relative;
+    top: 2px;
 }
 
 #customify-site-preview .cs-view-ports, #customify-site-preview .cs-preview-close {
