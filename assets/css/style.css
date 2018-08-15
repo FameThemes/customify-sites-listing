@@ -209,6 +209,7 @@
     color: #555;
     border: 1px solid transparent;
     border-radius: 2px;
+    background: #fff;
 }
 
 .theme-browser .theme .view-button:hover {
