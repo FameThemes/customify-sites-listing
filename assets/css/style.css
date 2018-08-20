@@ -316,6 +316,7 @@ body.cs-previewing-site {
     display: block;
     transition: width .4s linear;
     background: #fff;
+    overflow:hidden;
 }
 
 #customify-site-preview.cs-hide {
@@ -347,6 +348,8 @@ body.cs-previewing-site {
     overflow-x: hidden;
     transition-property: left, right, top, bottom, width, margin, background;
     transition-duration: .2s;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 #customify-site-preview .cs-iframe-outer .cs-iframe[data-device="tablet"] {
@@ -376,7 +379,6 @@ body.cs-previewing-site {
     margin: 0 auto;
     border: 0px none;
     box-shadow: none;
-    position: absolute;
 }
 
 #customify-site-preview .cs-preview-bar {
@@ -456,14 +458,36 @@ body.cs-previewing-site {
     display: none;
 }
 
+body.cs-previewing-site {
+    overflow: hidden !important;
+}
+
+.cs-iframe-wrapper {
+    height: 100%;
+    width: 100%;
+    display: block;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 0px;
+    bottom: 0px;
+    left: 0px;
+    -webkit-overflow-scrolling: touch !important;
+}
+
 /* CSS for tablet */
 @media screen and (max-width: 768px) {
     #customify-site-preview .cs-iframe-outer {
         position: fixed;
         right: 0px;
+        -webkit-overflow-scrolling: touch !important;
+        overflow-y: scroll !important;
+        overflow:auto;
     }
     #customify-site-preview .cs-iframe-outer iframe {
-        position: fixed;
+
     }
     .cs-device-view {
         display: none !important;
@@ -471,8 +495,5 @@ body.cs-previewing-site {
     #customify-site-preview .cs-preview-bar .cs-demo-name{
         font-size: 16px;
     }
-    #customify-site-preview .cs-iframe-outer iframe {
-        right: 0px;
-        bottom: 0px;
-    }
+
 }

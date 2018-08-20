@@ -7,7 +7,6 @@
             <div class="cs-iframe-wrapper">
                 <iframe id="cs-preview-iframe" frameborder="0" hspace="0" allowtransparency="true" src=""></iframe>
             </div>
-
         </div>
     </div>
     <div class="cs-preview-bar">
