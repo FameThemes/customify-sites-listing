@@ -456,4 +456,16 @@ body.cs-previewing-site {
     display: none;
 }
 
-/*# sourceMappingURL=style.css.map */
+/* CSS for tablet */
+@media screen and (max-width: 768px) {
+    .cs-device-view {
+        display: none !important;
+    }
+    #customify-site-preview .cs-preview-bar .cs-demo-name{
+        font-size: 16px;
+    }
+    #customify-site-preview .cs-iframe-outer iframe {
+        right: 0px;
+        bottom: 0px;
+    }
+}
