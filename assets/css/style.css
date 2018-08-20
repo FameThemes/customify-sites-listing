@@ -458,6 +458,13 @@ body.cs-previewing-site {
 
 /* CSS for tablet */
 @media screen and (max-width: 768px) {
+    #customify-site-preview .cs-iframe-outer {
+        position: fixed;
+        right: 0px;
+    }
+    #customify-site-preview .cs-iframe-outer iframe {
+        position: fixed;
+    }
     .cs-device-view {
         display: none !important;
     }
