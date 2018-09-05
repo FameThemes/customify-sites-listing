@@ -471,7 +471,6 @@ body.cs-previewing-site {
     position: absolute;
     top: 0px;
     right: 0px;
-    opacity: 0px;
     bottom: 0px;
     left: 0px;
     -webkit-overflow-scrolling: touch !important;
