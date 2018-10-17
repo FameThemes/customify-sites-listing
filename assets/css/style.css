@@ -119,8 +119,7 @@
 .theme-browser .themes {
     clear: both;
     transition: all .2s ease;
-    margin-left: 0px;
-    margin-right: 0px;
+
 }
 
 .theme-browser .themes .cs-site {
@@ -129,6 +128,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .theme-browser .themes {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
     .theme-browser .themes .cs-site {
         margin-bottom: 30px;
         transition: all .2s ease;
